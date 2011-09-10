@@ -1,0 +1,20 @@
+<project name="proregu" default="build" basedir=".">
+    <description>
+        Tools to support Commodore 64 Programmer's Reference Guide
+    </description>
+
+    <target name="build" description="build tools to build web site" >
+        <mkdir dir="classes" />
+        <javac srcdir="source" destdir="classes" includeAntRuntime="false" />
+        <copy file="source/c64-characters.png" todir="classes" />
+        <jar jarfile="proregu.jar" basedir="classes">
+            <manifest>
+                <attribute name="Main-Class" value="at.roskakori.proregu.CreateScreenCodeTable" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="site" depends="build" description="build resources for web site">
+        <java failonerror="true" fork="true" jar="proregu.jar" />
+    </target>
+</project>
