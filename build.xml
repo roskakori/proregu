@@ -17,4 +17,9 @@
     <target name="site" depends="build" description="build resources for web site">
         <java failonerror="true" fork="true" jar="proregu.jar" />
     </target>
+
+    <target name="clean" description="remove built resources">
+        <delete dir="classes" />
+        <delete dir="site" />
+    </target>
 </project>
