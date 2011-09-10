@@ -22,4 +22,20 @@
         <delete dir="classes" />
         <delete dir="site" />
     </target>
+
+    <target name="sloccount" description="build sloccount report">
+        <echo message="build sloccount report" />
+        <exec executable="sloccount" failonerror="true">
+            <arg value="--details" />
+            <arg value="--wide" />
+            <arg value="source" />
+            <redirector output="sloccount.sc">
+                <outputfilterchain>
+                    <linecontains negate="true">
+                        <contains value=".git" />
+                    </linecontains>
+                </outputfilterchain>
+            </redirector>
+        </exec>
+    </target>
 </project>
