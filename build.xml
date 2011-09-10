@@ -23,6 +23,8 @@
         <delete dir="site" />
     </target>
 
+    <target name="jenkins" depends="site, sloccount" description="build all targets required for Jenkins CI" />
+
     <target name="sloccount" description="build sloccount report">
         <echo message="build sloccount report" />
         <exec executable="sloccount" failonerror="true">
