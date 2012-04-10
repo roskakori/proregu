@@ -15,7 +15,9 @@
     </target>
 
     <target name="site" depends="build" description="build resources for web site">
-        <java failonerror="true" fork="true" jar="proregu.jar" />
+        <java failonerror="true" fork="true" jar="proregu.jar">
+            <sysproperty key="java.awt.headless" value="true" />
+        </java>
     </target>
 
     <target name="clean" description="remove built resources">
